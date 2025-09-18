@@ -1,4 +1,7 @@
 import React from 'react';
+import project1 from '../images/project1.jpg';
+import project2 from '../images/project2.avif';
+import project3 from '../images/project3.png';
 
 // ✅ Project Data with Different Images
 const data = [
@@ -6,19 +9,19 @@ const data = [
     title: 'E-commerce website',
     desc: 'A modern e-commerce platform that allows users to browse products, add items to their cart, and securely checkout. Built with a responsive design, product search and filtering, and an intuitive UI for a seamless shopping experience.',
     github: '#',
-    image: 'src/images/project1.jpg', // ✅ Image 1
+    image: project1, // ✅ Image 1
   },
   {
     title: 'Chatify - Real-time-chat-app',
     desc: 'Chatify is a real-time messaging application that enables users to chat instantly in private or group conversations. It features live typing indicators, message delivery status, and a responsive UI, built using Node.js for low-latency communication.',
     github: '#',
-    image: 'src/images/project2.avif', // ✅ Image 2
+    image: project2, // ✅ Image 2
   },
   {
     title: 'Library Management System',
     desc: 'A Library Management System developed in Advanced Java using NetBeans IDE, featuring Swing-based GUI for an intuitive interface, JDBC for database connectivity, and robust modules for managing books, members, issue/return records, and fine calculation. Designed for efficient library operations with a user-friendly experience.',
     github: '#',
-    image: 'src/images/project3.png', // ✅ Image 3
+    image: project3, // ✅ Image 3
   },
 ];
 

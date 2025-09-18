@@ -1,23 +1,35 @@
+// ---------------------- Imports & Setup ----------------------
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import Contact from './models/Contact.js';
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ Use only one connection string
+// ---------------------- MongoDB Connection ----------------------
 const MONGO_URI =
   process.env.MONGO_URI ||
   'mongodb+srv://rohitmeher513_db_user:Jxnb4kM5csnekQk2@test-portfolio-db.wkqh5js.mongodb.net/mernstack?retryWrites=true&w=majority';
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+mongoose
+  .connect(MONGO_URI)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch((err) => {
+    console.error('❌ MongoDB connection error:', err.message);
+    process.exit(1);
+  });
+
+// ---------------------- Middleware ----------------------
+app.use(cors({ origin:['https://mern-portfolio-fullstack.onrender.com','http://localhost:5173'], methods: ['GET', 'POST']})); // Dev frontend port
 app.use(express.json());
 
-// ✅ Routes
-app.get('/', (req, res) => res.send('Backend up'));
+// ---------------------- API Routes ----------------------
+app.get('/api', (req, res) => res.send('Backend API is running'));
 
 app.post('/api/form', async (req, res) => {
   try {
@@ -51,14 +63,19 @@ app.post('/api/form', async (req, res) => {
   }
 });
 
-// ✅ Single Mongoose connection
-mongoose
-  .connect(MONGO_URI) // No deprecated options needed in v6+
-  .then(() => {
-    console.log('✅ Connected to MongoDB');
-    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-  })
-  .catch((err) => {
-    console.error('❌ MongoDB connection error:', err.message);
-    process.exit(1);
-  });
+// ---------------------- Serve React Frontend ----------------------
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// Handle all other routes by serving React's index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
+
+// ---------------------- Start Server ----------------------
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});

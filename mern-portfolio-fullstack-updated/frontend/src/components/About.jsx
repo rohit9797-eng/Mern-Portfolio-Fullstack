@@ -1,4 +1,7 @@
 import React from 'react';
+import school from '../images/school.jpg';
+import college from '../images/college.jpg';
+import university from '../images/university.jpg';
 
 export default function About() {
   return (
@@ -27,8 +30,7 @@ export default function About() {
           </p>
           <div className="flex-shrink-0 flex justify-end">
         <img
-          src="src/images/school.jpg"  // Replace with your image path
-          alt="Profile"
+          src={school} alt="School"
           className="w-80 h-40 rounded-lg shadow-lg object-cover"
         />
           </div>
@@ -40,8 +42,7 @@ export default function About() {
 
           <div className="flex-shrink-0 flex justify-front">
         <img
-          src="src/images/college.jpg"  // Replace with your image path
-          alt="Profile"
+          src={college} alt="college"
           className="w-80 h-40 rounded-lg shadow-lg object-cover"
         />
       </div>
@@ -52,8 +53,7 @@ export default function About() {
           </p>
           <div className="flex-shrink-0 flex justify-center">
         <img
-          src="src/images/university.jpg"  // Replace with your image path
-          alt="Profile"
+          src={university} alt="university"
           className="w-80 h-40 rounded-lg shadow-lg object-cover"
         />
       </div>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import rohit from '../images/rohit.jpg';
 
 export default function Home() {
   useEffect(() => {
@@ -77,11 +78,7 @@ export default function Home() {
 
       <div className="flex-1 flex justify-center">
         <div className="w-72 md:w-66 h-66 rounded-lg bg-gradient-to-tr from-purple-200 to-indigo-100 flex items-center justify-center text-indigo-700">
-          <img 
-    src="src/images/rohit.jpg" 
-    alt="Hero Graphic" 
-    className="max-h-full max-w-full object-contain rounded" 
-  />
+          <img src={rohit} alt="Rohit" className="max-h-full max-w-full object-contain rounded" />
         </div>
       </div>
     </section>

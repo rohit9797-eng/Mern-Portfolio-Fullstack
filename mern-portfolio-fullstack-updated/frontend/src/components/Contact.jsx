@@ -9,36 +9,33 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setServerMsg('');
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setServerMsg('');
 
-    try {
-      const res = await fetch('http://localhost:5000/api/form', {
+  try {
+    const res = await fetch(
+      'https://mern-portfolio-backend.onrender.com/api/form',
+      {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form), // ✅ send the entire form state
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        body: JSON.stringify(form),
       }
+    );
 
-      setServerMsg('✅ Message sent successfully!');
-      console.log('Form submitted successfully:', data);
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || 'Something went wrong');
 
-      // Clear the form after successful submission
-      setForm({ name: '', email: '', message: '' });
-    } catch (err) {
-      console.error('Form submission error:', err);
-      setServerMsg(`❌ ${err.message}`);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    setServerMsg('✅ Message sent successfully!');
+    setForm({ name: '', email: '', message: '' });
+  } catch (err) {
+    console.error(err);
+    setServerMsg(`❌ ${err.message}`);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <section className="max-w-900 mx-auto p-4">
