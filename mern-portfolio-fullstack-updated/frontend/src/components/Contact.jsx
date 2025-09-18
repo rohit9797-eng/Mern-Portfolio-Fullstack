@@ -23,8 +23,12 @@ const handleSubmit = async (e) => {
         body: JSON.stringify(form),
       }
     );
-
-    const data = await res.json().catch(() => ({}));
+        let data;
+    try {
+      data = await res.json();
+    } catch {
+      throw new Error('Server returned invalid JSON');
+    }
     if (!res.ok) throw new Error(data.error || 'Something went wrong');
 
     setServerMsg('✅ Message sent successfully!');
