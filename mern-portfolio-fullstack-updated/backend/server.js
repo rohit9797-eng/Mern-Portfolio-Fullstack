@@ -29,8 +29,6 @@ app.use(cors({ origin:['https://mern-portfolio-fullstack.onrender.com','http://l
 app.use(express.json());
 
 // ---------------------- API Routes ----------------------
-app.get('/api', (req, res) => res.send('Backend API is running'));
-
 app.post('/api/form', async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -62,7 +60,7 @@ app.post('/api/form', async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
-
+app.get('/api', (req, res) => res.send('Backend API is running'));
 // ---------------------- Serve React Frontend ----------------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
