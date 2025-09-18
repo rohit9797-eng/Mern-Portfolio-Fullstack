@@ -16,7 +16,7 @@ const handleSubmit = async (e) => {
 
   try {
     const res = await fetch(
-      'https://mern-portfolio-backend.onrender.com/api/form',
+      'https://mern-portfolio-fullstack.onrender.com/api/form',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
