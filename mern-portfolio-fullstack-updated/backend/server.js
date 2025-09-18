@@ -27,6 +27,10 @@ const contactSchema = new mongoose.Schema({
   message: String,
 });
 const Contact = mongoose.model('Contact', contactSchema);
+// server.js or index.js
+app.get('/', (req, res) => {
+  res.send('✅ Backend is running');
+});
 
 app.post('/api/form', async (req, res) => {
   try {
