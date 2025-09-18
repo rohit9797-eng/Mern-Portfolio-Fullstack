@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDownTrayIcon, EyeIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon } from '@heroicons/react/24/outline';
 
 export default function Resume() {
   return (
