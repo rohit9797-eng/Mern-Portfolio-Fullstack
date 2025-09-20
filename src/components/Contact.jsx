@@ -5,12 +5,8 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverMsg, setServerMsg] = useState("");
 
-  // 👉 Change this to your deployed Render backend URL
-// Use local backend for dev and Render for production
-  const BACKEND_URL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:5000/contact"
-      : "https://mern-portfolio-fullstack.onrender.com/contact";
+  // ✅ Use environment variable for backend
+  const BACKEND_URL = process.env.REACT_APP_API_URL + "/contact";
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,15 +24,12 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
-      // Attempt to parse JSON safely
       let data = {};
       try {
         data = await res.json();
       } catch {
         throw new Error("Invalid JSON response");
       }
-
-      console.log("Response status:", res.status, "Data:", data);
 
       if (res.ok && data.success) {
         setServerMsg("✅ Message submitted successfully!");
@@ -52,7 +45,7 @@ export default function Contact() {
     }
   };
 
-   return (
+  return (
     <section className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 px-4 py-10">
       <div className="w-full max-w-lg bg-white shadow-2xl rounded-2xl p-8">
         <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">
