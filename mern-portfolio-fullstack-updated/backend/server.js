@@ -15,6 +15,9 @@ app.use(
       "http://localhost:5173",               // Vite dev server
       "https://your-frontend.vercel.app",
       "https://mern-portfolio-fullstack-msm2.vercel.app/contact", // Production frontend URL
+      "http://localhost:3000",                 // CRA dev server
+      "http://localhost:5173",                 // Vite dev server
+      "https://mern-portfolio-fullstack-msm2.vercel.app" // ✅ Production frontend URL (no /contact)
     ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
@@ -33,7 +36,7 @@ mongoose
     process.exit(1);
   });
 
-// ✅ Contact schema & model (timestamps enabled for createdAt/updatedAt)
+// ✅ Contact schema & model
 const contactSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -44,7 +47,7 @@ const contactSchema = new mongoose.Schema(
 );
 const Contact = mongoose.model("Contact", contactSchema);
 
-// ✅ Root route to verify server is running
+// ✅ Root route
 app.get("/", (req, res) => {
   res.json({ status: "✅ Backend is running" });
 });
@@ -55,20 +58,21 @@ app.post("/contact", async (req, res) => {
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
-      return res.status(400).json({ error: "All fields are required" });
+      return res.status(400).json({ success: false, error: "All fields are required" });
     }
 
     const newContact = new Contact({ name, email, message });
     await newContact.save();
 
+    console.log(`📨 Saved contact: ${name} (${email})`);
     res.status(201).json({ success: true, message: "Message saved successfully!" });
   } catch (err) {
     console.error("❌ Error saving contact:", err.message);
-    res.status(500).json({ error: "Server error, please try again." });
+    res.status(500).json({ success: false, error: "Server error, please try again." });
   }
 });
 
-// ✅ Optional: Fetch contacts with pagination (useful for admin view)
+// ✅ Optional: Fetch contacts with pagination (admin use)
 app.get("/contacts", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -101,8 +105,4 @@ app.use((req, res) => {
 // ✅ Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> c013b2f34a2cc3adee56991e5a862b5c1f889628
