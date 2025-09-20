@@ -100,4 +100,8 @@ app.use((req, res) => {
 // ✅ Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> c013b2f34a2cc3adee56991e5a862b5c1f889628

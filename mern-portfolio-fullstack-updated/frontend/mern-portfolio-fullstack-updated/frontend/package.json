@@ -1,28 +1,18 @@
 {
-  "name": "frontend",
+  "name": "mern-portfolio-frontend",
   "version": "1.0.0",
   "private": true,
-<<<<<<< HEAD
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-=======
->>>>>>> c013b2f34a2cc3adee56991e5a862b5c1f889628
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "axios": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.1",
-    "react-scripts": "5.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "react-router-dom": "^6.16.0"
   },
   "browserslist": {
     "production": [
@@ -35,5 +25,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "@vitejs/plugin-react": "^5.0.3",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13",
+    "vite": "^7.1.6"
   }
 }
