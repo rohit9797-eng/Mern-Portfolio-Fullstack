@@ -13,6 +13,7 @@ app.use(
     origin: [
       "http://localhost:3000",               // CRA dev server
       "http://localhost:5173",               // Vite dev server
+      "https://your-frontend.vercel.app",
       "https://mern-portfolio-fullstack-msm2.vercel.app/contact", // Production frontend URL
     ],
     methods: ["GET", "POST"],
