@@ -1,5 +1,6 @@
 import React from 'react';
-import { AcademicCapIcon } from '@heroicons/react/24/outline';
+// Import the icons you use
+import { AcademicCapIcon, ArrowDownTrayIcon, BriefcaseIcon, EyeIcon } from '@heroicons/react/24/outline';
 
 export default function Resume() {
   return (
@@ -16,14 +17,17 @@ export default function Resume() {
 
       {/* Buttons */}
       <div className="mt-8 flex justify-center gap-6 flex-wrap">
+        {/* Download Resume */}
         <a
-          href="/assets/Resume_Rohit_Meher.pdf"
+          href="/assets/ROHIT_MEHER_CV.pdf"
           download
           className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"
         >
           <ArrowDownTrayIcon className="w-5 h-5" />
           Download Resume
         </a>
+
+        {/* View Online */}
         <a
           href="/assets/ROHIT_MEHER_CV.pdf"
           target="_blank"
@@ -37,29 +41,31 @@ export default function Resume() {
 
       {/* Experience Section */}
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* First Experience */}
         <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition-shadow duration-300">
           <div className="text-sm text-gray-500">2023 — 2024</div>
           <h3 className="text-xl font-semibold mt-2 text-indigo-700">Intern pe — Web Development</h3>
           <p className="mt-3 text-gray-500 font-bold">
-            Built and maintained modern, responsive frontend components for a SaaS product. 
+            Built and maintained modern, responsive frontend components for a SaaS product.
             Collaborated with backend teams to integrate APIs and improve performance.
           </p>
           <ul className="mt-3 list-disc list-inside text-gray-700">
             <li>Improved component reusability and reduced build times by 20%.</li>
-            <li>Worked with Html, CSS, BootStrap, Php and MYSQL to deliver production features.</li>
+            <li>Worked with HTML, CSS, Bootstrap, PHP, and MySQL to deliver production features.</li>
           </ul>
         </div>
 
+        {/* Second Experience */}
         <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition-shadow duration-300">
           <div className="text-sm text-gray-500">2025 — Present</div>
-          <h3 className="text-xl font-semibold mt-2 text-indigo-700">InternsElite — MERN STACK Developement</h3>
+          <h3 className="text-xl font-semibold mt-2 text-indigo-700">InternsElite — MERN STACK Development</h3>
           <p className="mt-3 text-gray-500 font-bold">
-            Designed and developed A responsive full-stack portfolio website built with the MERN stack (MongoDB, Express, React, Node.js)
-             to showcase projects, skills, and experience.
+            Designed and developed a responsive full-stack portfolio website built with the MERN stack (MongoDB, Express, React, Node.js)
+            to showcase projects, skills, and experience.
           </p>
           <ul className="mt-3 list-disc list-inside text-gray-700">
-            <li> Features include an interactive front-end, a secure backend for storing contact form submissions, dynamic project sections.</li>
-            <li> Deployment on platforms like Netlify/Vercel for the frontend and Render/Heroku for the backend.</li>
+            <li>Features include an interactive front-end, a secure backend for storing contact form submissions, and dynamic project sections.</li>
+            <li>Deployed on platforms like Netlify/Vercel for the frontend and Render/Heroku for the backend.</li>
           </ul>
         </div>
       </div>
@@ -81,7 +87,7 @@ export default function Resume() {
             'Java',
             'Advanced Java',
             'PHP',
-            'MYSQL'
+            'MySQL'
           ].map((skill) => (
             <span
               key={skill}
